@@ -1,17 +1,26 @@
 const express = require('express');
+const path = require('path');
 const app = express();
-
-// Archivos estáticos
-app.use(express.static('public'));
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Ruta raíz
+// Rutas principales
 app.get('/', (req, res) => {
-  res.send('Hola mundo!');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+
+app.get('/acerca', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'acerca.html'));
+});
+
+app.get('/contacto', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'contacto.html'));
+});
+
+// Archivos estáticos
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Middleware básico para manejo de errores
 app.use((err, req, res, next) => {
