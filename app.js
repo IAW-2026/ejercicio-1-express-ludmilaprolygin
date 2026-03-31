@@ -19,6 +19,10 @@ app.get('/contacto', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'contacto.html'));
 });
 
+app.get('/estilos', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'estilos.html'));
+});
+
 // Archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
