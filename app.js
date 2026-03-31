@@ -5,11 +5,11 @@ const app = express();
 
 let visitas = 0;
 let mensajes = [];
-const productos = [
-  { id: 1, nombre: 'Camisa', precio: 2500 },
-  { id: 2, nombre: 'Pantalón', precio: 3200 },
-  { id: 3, nombre: 'Gorra', precio: 1200 }
-];
+
+const loadProductos = () => {
+  const raw = fs.readFileSync(path.join(__dirname, 'productos.json'), 'utf8');
+  return JSON.parse(raw);
+};
 
 const escapeHtml = (value) => String(value || '')
   .replace(/&/g, '&amp;')
@@ -84,7 +84,13 @@ app.get('/productos', (req, res) => {
 });
 
 app.get('/api/productos', (req, res) => {
-  res.json(productos);
+  try {
+    const productos = loadProductos();
+    res.json(productos);
+  } catch (error) {
+    console.error('Error leyendo productos.json:', error);
+    res.status(500).json({ error: 'No se pudieron cargar los productos' });
+  }
 });
 
 app.get('/estilos', (req, res) => {
