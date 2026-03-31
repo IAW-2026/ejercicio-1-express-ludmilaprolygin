@@ -15,8 +15,14 @@
         <a href="/estilos">Estilos</a>
       </nav>
       <h1>Contacto</h1>
-      <p>Puedes comunicarte con el autor del ejercicio enviando un mensaje a:</p>
-      <p><strong>ejemplo@correo.com</strong></p>
+      <p>Completa el formulario y envía tu nombre y mensaje.</p>
+      <form action="/contacto" method="POST">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
     </main>
     <script src="/script.js"></script>
   </body>
