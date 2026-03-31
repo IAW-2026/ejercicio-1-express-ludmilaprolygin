@@ -5,6 +5,11 @@ const app = express();
 
 let visitas = 0;
 let mensajes = [];
+const productos = [
+  { id: 1, nombre: 'Camisa', precio: 2500 },
+  { id: 2, nombre: 'Pantalón', precio: 3200 },
+  { id: 3, nombre: 'Gorra', precio: 1200 }
+];
 
 const escapeHtml = (value) => String(value || '')
   .replace(/&/g, '&amp;')
@@ -72,6 +77,14 @@ app.post('/mensajes', (req, res) => {
   const lista = mensajes.map((msg) => `<li>${msg}</li>`).join('');
   const html = template.replace(/{{mensajes}}/g, lista);
   res.send(html);
+});
+
+app.get('/productos', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'productos.html'));
+});
+
+app.get('/api/productos', (req, res) => {
+  res.json(productos);
 });
 
 app.get('/estilos', (req, res) => {

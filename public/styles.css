@@ -46,6 +46,31 @@ button {
 button:hover {
   background: #1d4ed8;
 }
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.producto-card {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #cbd5e1;
+  text-align: left;
+}
+
+.producto-card h2 {
+  margin: 0 0 0.5rem;
+  color: #1d4ed8;
+}
+
+.producto-card p {
+  margin: 0;
+  color: #334155;
+}
 label {
   display: block;
   margin-top: 1.25rem;

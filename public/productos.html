@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mensajes</title>
+    <title>Productos</title>
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
@@ -17,19 +17,12 @@
         <a href="/mensajes">Mensajes</a>
         <a href="/productos">Productos</a>
       </nav>
-      <h1>Mensajes enviados</h1>
-      <form action="/mensajes" method="POST">
-        <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-      <section>
-        <h2>Mensajes anteriores</h2>
-        <ul>
-          {{mensajes}}
-        </ul>
+      <h1>Productos</h1>
+      <p>Estos productos se obtienen desde la API <code>/api/productos</code> con <code>fetch</code>.</p>
+      <section id="productos-list">
+        <p>Cargando productos...</p>
       </section>
     </main>
-    <script src="/script.js"></script>
+    <script src="/productos.js"></script>
   </body>
 </html>
