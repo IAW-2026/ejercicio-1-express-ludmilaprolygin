@@ -44,6 +44,17 @@ app.post('/contacto', (req, res) => {
   res.send(html);
 });
 
+app.get('/encuesta', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'encuesta.html'));
+});
+
+app.post('/encuesta', (req, res) => {
+  const opcion = escapeHtml(req.body.opcion || 'No seleccionada');
+  const template = fs.readFileSync(path.join(__dirname, 'public', 'encuesta-respuesta.html'), 'utf8');
+  const html = template.replace(/{{opcion}}/g, opcion);
+  res.send(html);
+});
+
 app.get('/estilos', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'estilos.html'));
 });
