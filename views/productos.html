@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página principal</title>
-    <link rel="stylesheet" href="/styles.css">
+    <title>Productos</title>
+    <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
     <main>
@@ -19,10 +19,13 @@
         <a href="/productos">Productos</a>
         <a href="/frase-view">Frase</a>
       </nav>
-      <h1>Bienvenido al ejercicio 3</h1>
-      <p>Esta página es la ruta principal del servidor con varias rutas.</p>
-      <button id="btn">Haz click</button>
+      <h1>Productos</h1>
+      <p>Estos productos se obtienen desde la API <code>/api/productos</code> con <code>fetch</code>.</p>
+      <section id="productos-list">
+        <p>Cargando productos...</p>
+      </section>
     </main>
-    <script src="/script.js"></script>
+    <script src="/js/productos.js"></script>
   </body>
 </html>
+

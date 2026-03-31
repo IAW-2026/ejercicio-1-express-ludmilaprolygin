@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto con fetch</title>
-    <link rel="stylesheet" href="/styles.css">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
     <main>
@@ -19,17 +19,17 @@
         <a href="/productos">Productos</a>
         <a href="/frase-view">Frase</a>
       </nav>
-      <h1>Contacto con fetch</h1>
-      <p>Envía tu nombre y mensaje usando <code>fetch</code> sin recargar la página.</p>
-      <form id="contacto-fetch-form">
+      <h1>Contacto</h1>
+      <p>Completa el formulario y envía tu nombre y mensaje.</p>
+      <form action="/contacto" method="POST">
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" required>
         <label for="mensaje">Mensaje</label>
         <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
         <button type="submit">Enviar</button>
       </form>
-      <div id="resultado" aria-live="polite"></div>
     </main>
-    <script src="/contacto-fetch.js"></script>
+    <script src="/js/script.js"></script>
   </body>
 </html>
+

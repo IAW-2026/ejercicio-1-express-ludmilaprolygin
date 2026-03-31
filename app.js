@@ -7,7 +7,7 @@ let visitas = 0;
 let mensajes = [];
 
 const loadProductos = () => {
-  const raw = fs.readFileSync(path.join(__dirname, 'productos.json'), 'utf8');
+  const raw = fs.readFileSync(path.join(__dirname, 'data', 'productos.json'), 'utf8');
   return JSON.parse(raw);
 };
 
@@ -25,28 +25,28 @@ app.use(express.urlencoded({ extended: true }));
 // Rutas principales
 app.get('/', (req, res) => {
   visitas += 1;
-  const template = fs.readFileSync(path.join(__dirname, 'public', 'visitas.html'), 'utf8');
+  const template = fs.readFileSync(path.join(__dirname, 'views', 'visitas.html'), 'utf8');
   const html = template.replace(/{{visitas}}/g, String(visitas));
   res.send(html);
 });
 
 app.get('/acerca', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'acerca.html'));
+  res.sendFile(path.join(__dirname, 'views', 'acerca.html'));
 });
 
 app.get('/contacto', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'contacto.html'));
+  res.sendFile(path.join(__dirname, 'views', 'contacto.html'));
 });
 
 app.get('/contacto-fetch', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'contacto-fetch.html'));
+  res.sendFile(path.join(__dirname, 'views', 'contacto-fetch.html'));
 });
 
 app.post('/contacto', (req, res) => {
   const nombre = escapeHtml(req.body.nombre || 'Anónimo');
   const mensaje = escapeHtml(req.body.mensaje || 'Sin mensaje');
 
-  const template = fs.readFileSync(path.join(__dirname, 'public', 'contacto-respuesta.html'), 'utf8');
+  const template = fs.readFileSync(path.join(__dirname, 'views', 'contacto-respuesta.html'), 'utf8');
   const html = template
     .replace(/{{nombre}}/g, nombre)
     .replace(/{{mensaje}}/g, mensaje);
@@ -62,18 +62,18 @@ app.post('/api/contacto', (req, res) => {
 });
 
 app.get('/encuesta', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'encuesta.html'));
+  res.sendFile(path.join(__dirname, 'views', 'encuesta.html'));
 });
 
 app.post('/encuesta', (req, res) => {
   const opcion = escapeHtml(req.body.opcion || 'No seleccionada');
-  const template = fs.readFileSync(path.join(__dirname, 'public', 'encuesta-respuesta.html'), 'utf8');
+  const template = fs.readFileSync(path.join(__dirname, 'views', 'encuesta-respuesta.html'), 'utf8');
   const html = template.replace(/{{opcion}}/g, opcion);
   res.send(html);
 });
 
 app.get('/mensajes', (req, res) => {
-  const template = fs.readFileSync(path.join(__dirname, 'public', 'mensajes.html'), 'utf8');
+  const template = fs.readFileSync(path.join(__dirname, 'views', 'mensajes.html'), 'utf8');
   const lista = mensajes.length
     ? mensajes.map((msg) => `<li>${msg}</li>`).join('')
     : '<li>No hay mensajes aún.</li>';
@@ -84,14 +84,14 @@ app.get('/mensajes', (req, res) => {
 app.post('/mensajes', (req, res) => {
   const mensaje = escapeHtml(req.body.mensaje || 'Sin mensaje');
   mensajes.push(mensaje);
-  const template = fs.readFileSync(path.join(__dirname, 'public', 'mensajes.html'), 'utf8');
+  const template = fs.readFileSync(path.join(__dirname, 'views', 'mensajes.html'), 'utf8');
   const lista = mensajes.map((msg) => `<li>${msg}</li>`).join('');
   const html = template.replace(/{{mensajes}}/g, lista);
   res.send(html);
 });
 
 app.get('/productos', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'productos.html'));
+  res.sendFile(path.join(__dirname, 'views', 'productos.html'));
 });
 
 app.get('/api/productos', (req, res) => {
@@ -117,11 +117,11 @@ app.get('/frase', (req, res) => {
 });
 
 app.get('/frase-view', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'frase.html'));
+  res.sendFile(path.join(__dirname, 'views', 'frase.html'));
 });
 
 app.get('/estilos', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'estilos.html'));
+  res.sendFile(path.join(__dirname, 'views', 'estilos.html'));
 });
 
 // Archivos estáticos

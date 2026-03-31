@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frase aleatoria</title>
-    <link rel="stylesheet" href="/styles.css">
+    <title>Mensaje recibido</title>
+    <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
     <main>
@@ -19,11 +19,12 @@
         <a href="/productos">Productos</a>
         <a href="/frase-view">Frase</a>
       </nav>
-      <h1>Frase aleatoria</h1>
-      <p>Haz clic en el botón para obtener una frase aleatoria desde <code>/frase</code>.</p>
-      <button id="btn-frase">Obtener frase</button>
-      <div id="frase-texto" style="margin-top:1.5rem;"></div>
+      <h1>Gracias por tu mensaje</h1>
+      <p><strong>Nombre:</strong> {{nombre}}</p>
+      <p><strong>Mensaje:</strong></p>
+      <p>{{mensaje}}</p>
     </main>
-    <script src="/frase.js"></script>
+    <script src="/js/script.js"></script>
   </body>
 </html>
+
