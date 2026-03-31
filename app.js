@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+// Archivos estáticos
+app.use(express.static('public'));
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
