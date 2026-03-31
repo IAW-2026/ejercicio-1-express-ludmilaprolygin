@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 
+let visitas = 0;
+
 const escapeHtml = (value) => String(value || '')
   .replace(/&/g, '&amp;')
   .replace(/</g, '&lt;')
@@ -16,7 +18,10 @@ app.use(express.urlencoded({ extended: true }));
 
 // Rutas principales
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  visitas += 1;
+  const template = fs.readFileSync(path.join(__dirname, 'public', 'visitas.html'), 'utf8');
+  const html = template.replace(/{{visitas}}/g, String(visitas));
+  res.send(html);
 });
 
 app.get('/acerca', (req, res) => {
