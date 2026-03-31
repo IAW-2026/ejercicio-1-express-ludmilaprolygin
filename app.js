@@ -61,6 +61,15 @@ app.post('/api/contacto', (req, res) => {
   res.json({ mensaje: `Hola ${nombre}, recibimos tu mensaje: "${mensaje}"` });
 });
 
+app.get('/saludo', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'saludo.html'));
+});
+
+app.post('/api/saludo', (req, res) => {
+  const nombre = escapeHtml(req.body.nombre || 'Anónimo');
+  res.json({ saludo: `Hola, ${nombre}` });
+});
+
 app.get('/encuesta', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'encuesta.html'));
 });

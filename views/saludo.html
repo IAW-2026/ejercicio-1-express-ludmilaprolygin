@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página principal</title>
+    <title>Saludo dinámico</title>
     <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
@@ -20,11 +20,15 @@
         <a href="/productos">Productos</a>
         <a href="/frase-view">Frase</a>
       </nav>
-      <h1>Bienvenido al ejercicio 3</h1>
-      <p>Esta página es la ruta principal del servidor con varias rutas.</p>
-      <button id="btn">Haz click</button>
+      <h1>Formulario dinámico</h1>
+      <p>Envía tu nombre y mostraré un saludo sin recargar la página.</p>
+      <form id="saludo-form">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <button type="submit">Enviar</button>
+      </form>
+      <div id="saludo-resultado" aria-live="polite"></div>
     </main>
-    <script src="/js/script.js"></script>
+    <script src="/js/saludo.js"></script>
   </body>
 </html>
-
