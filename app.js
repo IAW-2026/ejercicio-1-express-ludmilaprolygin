@@ -4,6 +4,7 @@ const path = require('path');
 const app = express();
 
 let visitas = 0;
+let mensajes = [];
 
 const escapeHtml = (value) => String(value || '')
   .replace(/&/g, '&amp;')
@@ -52,6 +53,24 @@ app.post('/encuesta', (req, res) => {
   const opcion = escapeHtml(req.body.opcion || 'No seleccionada');
   const template = fs.readFileSync(path.join(__dirname, 'public', 'encuesta-respuesta.html'), 'utf8');
   const html = template.replace(/{{opcion}}/g, opcion);
+  res.send(html);
+});
+
+app.get('/mensajes', (req, res) => {
+  const template = fs.readFileSync(path.join(__dirname, 'public', 'mensajes.html'), 'utf8');
+  const lista = mensajes.length
+    ? mensajes.map((msg) => `<li>${msg}</li>`).join('')
+    : '<li>No hay mensajes aún.</li>';
+  const html = template.replace(/{{mensajes}}/g, lista);
+  res.send(html);
+});
+
+app.post('/mensajes', (req, res) => {
+  const mensaje = escapeHtml(req.body.mensaje || 'Sin mensaje');
+  mensajes.push(mensaje);
+  const template = fs.readFileSync(path.join(__dirname, 'public', 'mensajes.html'), 'utf8');
+  const lista = mensajes.map((msg) => `<li>${msg}</li>`).join('');
+  const html = template.replace(/{{mensajes}}/g, lista);
   res.send(html);
 });
 
