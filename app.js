@@ -38,6 +38,10 @@ app.get('/contacto', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'contacto.html'));
 });
 
+app.get('/contacto-fetch', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'contacto-fetch.html'));
+});
+
 app.post('/contacto', (req, res) => {
   const nombre = escapeHtml(req.body.nombre || 'Anónimo');
   const mensaje = escapeHtml(req.body.mensaje || 'Sin mensaje');
@@ -48,6 +52,13 @@ app.post('/contacto', (req, res) => {
     .replace(/{{mensaje}}/g, mensaje);
 
   res.send(html);
+});
+
+app.post('/api/contacto', (req, res) => {
+  const nombre = escapeHtml(req.body.nombre || 'Anónimo');
+  const mensaje = escapeHtml(req.body.mensaje || 'Sin mensaje');
+
+  res.json({ mensaje: `Hola ${nombre}, recibimos tu mensaje: "${mensaje}"` });
 });
 
 app.get('/encuesta', (req, res) => {
