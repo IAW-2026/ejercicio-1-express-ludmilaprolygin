@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto con fetch</title>
+    <title>Frase aleatoria</title>
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
@@ -19,17 +19,11 @@
         <a href="/productos">Productos</a>
         <a href="/frase-view">Frase</a>
       </nav>
-      <h1>Contacto con fetch</h1>
-      <p>Envía tu nombre y mensaje usando <code>fetch</code> sin recargar la página.</p>
-      <form id="contacto-fetch-form">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" required>
-        <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-      <div id="resultado" aria-live="polite"></div>
+      <h1>Frase aleatoria</h1>
+      <p>Haz clic en el botón para obtener una frase aleatoria desde <code>/frase</code>.</p>
+      <button id="btn-frase">Obtener frase</button>
+      <div id="frase-texto" style="margin-top:1.5rem;"></div>
     </main>
-    <script src="/contacto-fetch.js"></script>
+    <script src="/frase.js"></script>
   </body>
 </html>

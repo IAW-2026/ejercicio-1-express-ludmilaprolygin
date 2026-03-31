@@ -104,6 +104,22 @@ app.get('/api/productos', (req, res) => {
   }
 });
 
+app.get('/frase', (req, res) => {
+  const frases = [
+    'La mejor manera de predecir el futuro es crearlo.',
+    'No cuentes los días, haz que los días cuenten.',
+    'El éxito es la suma de pequeños esfuerzos repetidos día tras día.',
+    'Aprender algo nuevo cada día te hace más fuerte.',
+    'El único límite es el que te pones a ti mismo.'
+  ];
+  const frase = frases[Math.floor(Math.random() * frases.length)];
+  res.json({ frase });
+});
+
+app.get('/frase-view', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'frase.html'));
+});
+
 app.get('/estilos', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'estilos.html'));
 });
